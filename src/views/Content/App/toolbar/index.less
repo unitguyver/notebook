@@ -1,0 +1,150 @@
+@import 'antd/es/style/themes/default.less';
+
+@keyframes open-window {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+#guyver-notebook-app {
+  .fadeIn (@x, @y, @z, @duration, @delay) {
+    @name: ~'fadeIn-@{x}-@{y}-@{z}';
+    @transform: ~'translate3d(@{x}px, @{y}px, @{z}px)';
+    @duration-s: (@duration/1000);
+    @delay-s: (@delay/1000);
+
+    @keyframes @name {
+      from {
+        opacity: 0;
+        transform: @transform;
+      }
+
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    opacity: 0;
+    animation-name: @name;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    animation-duration:~'@{duration-s}s';
+    animation-delay:~'@{delay-s}s';
+  }
+
+  .fixed-toolbar-group {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 30px;
+  }
+
+  .fixed-toolbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+
+    .ant-btn {
+      pointer-events: all;
+    }
+
+    .tool-icon-switch {
+      position: relative;
+    }
+
+    .tool-warning {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: @warning-color;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+
+      [class^=tool-icon] {
+        position: relative;
+        margin-right: 16px;
+      }
+
+      .tool-icon-1 {
+        .fadeIn(56, 0, 0, 300, 0);
+        z-index: 9;
+      }
+
+      .tool-icon-2 {
+        .fadeIn(112, 0, 0, 300, 100);
+        z-index: 8;
+      }
+
+      .tool-icon-3 {
+        .fadeIn(168, 0, 0, 300, 200);
+        z-index: 7;
+      }
+
+      .tool-icon-4 {
+        .fadeIn(224, 0, 0, 300, 300);
+        z-index: 6;
+      }
+
+      .tool-icon-5 {
+        .fadeIn(280, 0, 0, 300, 400);
+        z-index: 5;
+      }
+
+      .tool-icon-6 {
+        .fadeIn(336, 0, 0, 300, 500);
+        z-index: 4;
+      }
+
+      .theme-list {
+        display: flex;
+        flex-direction: column-reverse;
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+
+        .ant-btn {
+          margin-bottom: 16px;
+          position: relative;
+        }
+
+        .theme-1 {
+          .fadeIn(0, 56, 0, 300, 0);
+          z-index: 5;
+        }
+
+        .theme-2 {
+          .fadeIn(0, 112, 0, 300, 100);
+          z-index: 4
+        }
+
+        .theme-3 {
+          .fadeIn(0, 168, 0, 300, 200);
+          z-index: 3;
+        }
+      }
+    }
+  }
+}
